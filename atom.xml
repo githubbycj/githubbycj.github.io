@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://githubbycj.github.io/"/>
-  <updated>2020-05-30T13:40:35.842Z</updated>
+  <updated>2020-05-30T14:12:08.890Z</updated>
   <id>https://githubbycj.github.io/</id>
   
   <author>
@@ -17,50 +17,26 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>我又发布了一个新的博客Title</title>
-    <link href="https://githubbycj.github.io/2020/05/30/%E6%88%91%E5%8F%88%E5%8F%91%E5%B8%83%E4%BA%86%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://githubbycj.github.io/2020/05/30/%E6%88%91%E5%8F%88%E5%8F%91%E5%B8%83%E4%BA%86%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E5%8D%9A%E5%AE%A2/</id>
-    <published>2020-05-30T13:36:32.000Z</published>
-    <updated>2020-05-30T13:40:35.842Z</updated>
+    <title>如何删除Hexo 发布博客</title>
+    <link href="https://githubbycj.github.io/2020/05/30/delete-hexo-file/"/>
+    <id>https://githubbycj.github.io/2020/05/30/delete-hexo-file/</id>
+    <published>2020-05-30T14:06:09.000Z</published>
+    <updated>2020-05-30T14:12:08.890Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug"><a href="#bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug" class="headerlink" title="bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug"></a>bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug bug</h2><h3 id="全都是bug"><a href="#全都是bug" class="headerlink" title="全都是bug"></a>全都是bug</h3>]]></content>
+    <content type="html"><![CDATA[<h1 id="如何删除Hexo发布的文章"><a href="#如何删除Hexo发布的文章" class="headerlink" title="如何删除Hexo发布的文章"></a>如何删除Hexo发布的文章</h1><h2 id="进入hexo-的根目录"><a href="#进入hexo-的根目录" class="headerlink" title="进入hexo 的根目录"></a>进入hexo 的根目录</h2><p>然后进入<code>source/_posts</code> 文件夹下，找到需要删除的 .md文件删除</p><h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>重新生成发布就好</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> hexo clean</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> hexo generate</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> hexo deploy</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-bug-
+        &lt;h1 id=&quot;如何删除Hexo发布的文章&quot;&gt;&lt;a href=&quot;#如何删除Hexo发布的文章&quot; class=&quot;headerlink&quot; title=&quot;如何删除Hexo发布的文章&quot;&gt;&lt;/a&gt;如何删除Hexo发布的文章&lt;/h1&gt;&lt;h2 id=&quot;进入hexo-的根目录&quot;&gt;&lt;a href=
       
     
     </summary>
     
     
     
-      <category term="C#" scheme="https://githubbycj.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>My First Post</title>
-    <link href="https://githubbycj.github.io/2020/05/30/My-First-Post/"/>
-    <id>https://githubbycj.github.io/2020/05/30/My-First-Post/</id>
-    <published>2020-05-30T11:58:27.000Z</published>
-    <updated>2020-05-30T12:02:44.966Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="我是初级标题"><a href="#我是初级标题" class="headerlink" title="我是初级标题"></a>我是初级标题</h1><h2 id="我是第二级标题"><a href="#我是第二级标题" class="headerlink" title="我是第二级标题"></a>我是第二级标题</h2><h3 id="我是第三级标题"><a href="#我是第三级标题" class="headerlink" title="我是第三级标题"></a>我是第三级标题</h3><h4 id="我是第四级标题"><a href="#我是第四级标题" class="headerlink" title="我是第四级标题"></a>我是第四级标题</h4>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;我是初级标题&quot;&gt;&lt;a href=&quot;#我是初级标题&quot; class=&quot;headerlink&quot; title=&quot;我是初级标题&quot;&gt;&lt;/a&gt;我是初级标题&lt;/h1&gt;&lt;h2 id=&quot;我是第二级标题&quot;&gt;&lt;a href=&quot;#我是第二级标题&quot; class=&quot;headerlink&quot; ti
-      
-    
-    </summary>
-    
-    
-    
-      <category term="java" scheme="https://githubbycj.github.io/tags/java/"/>
+      <category term="Hexo" scheme="https://githubbycj.github.io/tags/Hexo/"/>
     
   </entry>
   
