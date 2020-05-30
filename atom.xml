@@ -87,4 +87,29 @@
     
   </entry>
   
+  <entry>
+    <title>PL/SQL Developer 远程链接 Oracle 数据库</title>
+    <link href="https://githubbycj.github.io/2016/12/12/plsql-Developer-connect-oracle/"/>
+    <id>https://githubbycj.github.io/2016/12/12/plsql-Developer-connect-oracle/</id>
+    <published>2016-12-12T04:13:23.000Z</published>
+    <updated>2020-05-30T15:11:20.740Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本机无需安装Oracle ， 只需要安装PL/SQL 和Oracle 驱动 即可远程链接Oracle 数据库 。</p><h2 id="第1步-下载工具"><a href="#第1步-下载工具" class="headerlink" title="第1步 下载工具"></a>第1步 下载工具</h2><ol><li><a href="https://www.allroundautomations.com/" target="_blank" rel="noopener">pl/sql 工具官网</a></li><li><a href="http://www.oracle.com/technetwork/topics/winx64soft-089540.html" target="_blank" rel="noopener">oracle 驱动包 官网</a><br><img src="/images/archives/20161212115533951.png" alt="alt oracle 驱动下载图"></li></ol><h2 id="第2步-先安装pl-sql"><a href="#第2步-先安装pl-sql" class="headerlink" title="第2步 先安装pl/sql"></a>第2步 先安装pl/sql</h2><p>安装过程 略</p><h2 id="第3步-解压oracle-驱动"><a href="#第3步-解压oracle-驱动" class="headerlink" title="第3步 解压oracle 驱动"></a>第3步 解压oracle 驱动</h2><p>3.1 解压 instantclient_12_1  放到指定目录<br>3.2 在instantclient_12_1 里面 新建文件夹 NETWORK/ADMIN/<br>3.3 再新建一个文件 tnsnames.ora （这里注意tnsnames.org 是固定写法）<br>文件内容配置oracle 链接信息<br><img src="/images/archives/20161212120245848.png" alt="alt tnsnames.org 文件配置"></p><h2 id="第4步-环境配置"><a href="#第4步-环境配置" class="headerlink" title="第4步 环境配置"></a>第4步 环境配置</h2><p>4.1 进入windows 环境变量配置<br>4.2 配置信息如下：<br>ORACLE_HOME = F:\instantclient_12_1 //指定的目录<br>TNS_ADMIN = F:\instantclient_12_1\NETWORK\ADMIN //配置 tsn文件路径<br>NLS_LANG = SIMPLIFIED CHINESE_CHINA.ZHS16GBK //配置编码<br>在path 最后添加 %ORACLE_HOME%  </p><h2 id="第5步-配置PL-SQL"><a href="#第5步-配置PL-SQL" class="headerlink" title="第5步 配置PL/SQL"></a>第5步 配置PL/SQL</h2><p>5.1 打开pl/sql 菜单 Tools –&gt; Preferences 如图：<br><img src="/images/archives/20161212121018344.png" alt="alt pl/sql 配置图"></p><h2 id="最后一步-重启PL-SQL"><a href="#最后一步-重启PL-SQL" class="headerlink" title="最后一步 重启PL/SQL"></a>最后一步 重启PL/SQL</h2><p>6.1 重启pl/sql 查看databases 是否有tnsnames 的链接 ，有的话就配置成功了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h1&gt;&lt;p&gt;本机无需安装Oracle ， 只需要安装PL/SQL 和Oracle 驱动 即可远程链接Oracle 数据库 。&lt;/p&gt;
+&lt;h2 id=&quot;第
+      
+    
+    </summary>
+    
+    
+    
+      <category term="oracle" scheme="https://githubbycj.github.io/tags/oracle/"/>
+    
+  </entry>
+  
 </feed>
