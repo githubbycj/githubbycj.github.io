@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>springmvc-merge-ueditor | Hexo</title>
+  <meta name="description" content="说明springmvc 页面整合百度ueditor 富文本编辑器， 使用spring自带的上传组件，替换掉ueditor 自带的jsp 上传组件， 下载ueditor， 下载jsp 版本utf-8 格式的好了 步骤一 搭建项目这里我为了方便使用了springboot 项目，在resource&#x2F;static&#x2F;文件夹下创建文件夹ueditor，然后解压下载好的ueditor1_4_3_3-utf8-j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springmvc-merge-ueditor">
+<meta property="og:url" content="https://githubbycj.github.io/2020/06/18/springmvc-merge-ueditor/index.html">
+<meta property="og:site_name" content="昌久个人博客">
+<meta property="og:description" content="说明springmvc 页面整合百度ueditor 富文本编辑器， 使用spring自带的上传组件，替换掉ueditor 自带的jsp 上传组件， 下载ueditor， 下载jsp 版本utf-8 格式的好了 步骤一 搭建项目这里我为了方便使用了springboot 项目，在resource&#x2F;static&#x2F;文件夹下创建文件夹ueditor，然后解压下载好的ueditor1_4_3_3-utf8-j">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://githubbycj.github.io/images/archives/springmvc-merge-ueditor-img01.png">
+<meta property="article:published_time" content="2020-06-18T12:27:17.000Z">
+<meta property="article:modified_time" content="2020-06-18T15:52:25.280Z">
+<meta property="article:author" content="昌久">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://githubbycj.github.io/images/archives/springmvc-merge-ueditor-img01.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://githubbycj.github.io/2020/06/18/springmvc-merge-ueditor/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="昌久个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://githubbycj.github.io/" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昌久</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">我不敲代码，我只是代码的搬运工</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> FoShan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/C/" style="font-size: 13px;">C#</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/java/" style="font-size: 13px;">java</a> <a href="/tags/oracle/" style="font-size: 13px;">oracle</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/18/springmvc-merge-ueditor/" class="title">springmvc-merge-ueditor</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-18T12:27:17.000Z" itemprop="datePublished">2020-06-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/30/create-hexo-file/" class="title">怎样创建hexo 的博客</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-30T14:16:58.000Z" itemprop="datePublished">2020-05-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/30/delete-hexo-file/" class="title">如何删除Hexo 发布博客</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-30T14:06:09.000Z" itemprop="datePublished">2020-05-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/30/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-30T09:36:22.257Z" itemprop="datePublished">2020-05-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/29/use-nuget-install-sqlite/" class="title">使用Nuget 安装 SQLite 小型数据库</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-29T14:07:04.000Z" itemprop="datePublished">2017-10-29</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-springmvc-merge-ueditor" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      springmvc-merge-ueditor
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/06/18/springmvc-merge-ueditor/" class="article-date">
+	  <time datetime="2020-06-18T12:27:17.000Z" itemprop="datePublished">2020-06-18</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/java/" rel="tag">java</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/18/springmvc-merge-ueditor/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>springmvc 页面整合百度ueditor 富文本编辑器， 使用spring自带的上传组件，替换掉ueditor 自带的jsp 上传组件， 下载<a href="http://ueditor.baidu.com/website/download.html" target="_blank" rel="noopener">ueditor</a>， 下载jsp 版本utf-8 格式的好了</p>
+<h2 id="步骤一-搭建项目"><a href="#步骤一-搭建项目" class="headerlink" title="步骤一 搭建项目"></a>步骤一 搭建项目</h2><p>这里我为了方便使用了springboot 项目，在<code>resource/static/</code>文件夹下创建文件夹ueditor，<br>然后解压下载好的ueditor1_4_3_3-utf8-jsp.zip文件， 将文件内容复制到ueditor 目录下，<br>如图：<br><img src="/images/archives/springmvc-merge-ueditor-img01.png" alt="alt 文件"></p>
+<h2 id="步骤二-编辑上传配置以及代码"><a href="#步骤二-编辑上传配置以及代码" class="headerlink" title="步骤二 编辑上传配置以及代码"></a>步骤二 编辑上传配置以及代码</h2><p>修改配置文件 ueditor.config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 编辑器资源文件根路径。它所表示的含义是：以编辑器实例化页面为当前路径，指向编辑器资源文件（即dialog等文件夹）的路径。</span></span><br><span class="line"><span class="comment">     * 鉴于很多同学在使用编辑器的时候出现的种种路径问题，此处强烈建议大家使用"相对于网站根目录的相对路径"进行配置。</span></span><br><span class="line"><span class="comment">     * "相对于网站根目录的相对路径"也就是以斜杠开头的形如"/myProject/ueditor/"这样的路径。</span></span><br><span class="line"><span class="comment">     * 如果站点中有多个不在同一层级的页面需要实例化编辑器，且引用了同一UEditor的时候，此处的URL可能不适用于每个页面的编辑器。</span></span><br><span class="line"><span class="comment">     * 因此，UEditor提供了针对不同页面的编辑器可单独配置的根路径，具体来说，在需要实例化编辑器的页面最顶部写上如下代码即可。当然，需要令此处的URL等于对应的配置。</span></span><br><span class="line"><span class="comment">     * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> URL = <span class="built_in">window</span>.UEDITOR_HOME_URL || getUEBasePath();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">window</span>.UEDITOR_CONFIG = &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//为编辑器实例添加一个路径，这个不能被注释</span></span><br><span class="line">        UEDITOR_HOME_URL: URL</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 服务器统一请求接口路径</span></span><br><span class="line">        <span class="comment">// , serverUrl: URL + "jsp/controller.jsp"  将这里改成下面的代码</span></span><br><span class="line">        , <span class="attr">serverUrl</span>: URL + <span class="string">"/ueditor"</span></span><br><span class="line"><span class="comment">// ...... 省略下面的代码</span></span><br></pre></td></tr></table></figure>
+<p>新建<code>UEditorController.java</code>类 用户替换 ueditor自带的jsp 类上传组件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/ueditor"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UEditorController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"$&#123;ueditor.imagepath&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String imageUploadPath;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"$&#123;ueditor.videopath&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String videoUploadPath;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"$&#123;ueditor.filepath&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String fileUploadPath;</span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"$&#123;spring.profiles.active&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> List&lt;String&gt; active;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">index</span><span class="params">(String action, HttpServletRequest request, Integer start, Integer size)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span> == action)</span><br><span class="line">			<span class="keyword">return</span> config();</span><br><span class="line">		MultipartHttpServletRequest multipartHttpServletRequest = <span class="keyword">null</span>;</span><br><span class="line">		MultipartFile upfile;</span><br><span class="line">		<span class="keyword">if</span> (request <span class="keyword">instanceof</span> MultipartHttpServletRequest) &#123;</span><br><span class="line">			multipartHttpServletRequest = (MultipartHttpServletRequest) request;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">switch</span> (action) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"config"</span>: <span class="comment">// 配置获取</span></span><br><span class="line">			<span class="keyword">return</span> config();</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"uploadimage"</span>: <span class="comment">// 图片上传</span></span><br><span class="line">			upfile = multipartHttpServletRequest.getFile(<span class="string">"upfile"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.upfile(upfile, <span class="string">"image"</span>, <span class="keyword">this</span>.imageUploadPath);</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"uploadvideo"</span>: <span class="comment">// 视频上传</span></span><br><span class="line">			upfile = multipartHttpServletRequest.getFile(<span class="string">"upfile"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.upfile(upfile, <span class="string">"video"</span>, <span class="keyword">this</span>.videoUploadPath);</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"uploadfile"</span>: <span class="comment">// 附件上传</span></span><br><span class="line">			upfile = multipartHttpServletRequest.getFile(<span class="string">"upfile"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.upfile(upfile, <span class="string">"file"</span>, <span class="keyword">this</span>.fileUploadPath);</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"uploadscrawl"</span>: <span class="comment">// 涂鸦上传</span></span><br><span class="line">			<span class="keyword">return</span> uploadscrawl(request.getParameter(<span class="string">"upfile"</span>));</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"listimage"</span>: <span class="comment">// 在线图片获取</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.resources(<span class="keyword">this</span>.imageUploadPath, start, size);</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"listfile"</span>: <span class="comment">// 在线文件获取</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.resources(<span class="keyword">this</span>.fileUploadPath, start, size);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 显示图片</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> ymd</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> imgname</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/image/&#123;ymd&#125;/&#123;imgname&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">image</span><span class="params">(@PathVariable(<span class="string">"ymd"</span>)</span> String ymd, @<span class="title">PathVariable</span><span class="params">(<span class="string">"imgname"</span>)</span> String imgname,</span></span><br><span class="line"><span class="function">			HttpServletResponse response) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.responsefile(<span class="keyword">this</span>.imageUploadPath, ymd, imgname, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 显示 视频</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> ymd</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> videoname</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/video/&#123;ymd&#125;/&#123;videoname&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">video</span><span class="params">(@PathVariable(<span class="string">"ymd"</span>)</span> String ymd, @<span class="title">PathVariable</span><span class="params">(<span class="string">"videoname"</span>)</span> String videoname,</span></span><br><span class="line"><span class="function">			HttpServletResponse response) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.responsefile(<span class="keyword">this</span>.videoUploadPath, ymd, videoname, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 文件响应</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> ymd</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> filename</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/file/&#123;ymd&#125;/&#123;filename&#125;"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">file</span><span class="params">(@PathVariable(<span class="string">"ymd"</span>)</span> String ymd, @<span class="title">PathVariable</span><span class="params">(<span class="string">"filename"</span>)</span> String filename,</span></span><br><span class="line"><span class="function">			HttpServletResponse response) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.responsefile(<span class="keyword">this</span>.fileUploadPath, ymd, filename, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 文件响应</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> filetype</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> ymd</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> filenamne</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">responsefile</span><span class="params">(String uploadPathPrefix, String ymd, String filenamne, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		response.setContentType(<span class="string">"application/octet-stream;charset=utf-8"</span>);</span><br><span class="line">		response.setHeader(<span class="string">"content-disposition"</span>,</span><br><span class="line">				<span class="string">"attachment;filename="</span> + java.net.URLEncoder.encode(filenamne, <span class="string">"utf-8"</span>));</span><br><span class="line">		String fullPath = uploadPathPrefix + File.separator + ymd + File.separator + filenamne;</span><br><span class="line">		;</span><br><span class="line">		File downFile = <span class="keyword">new</span> File(fullPath);</span><br><span class="line">		<span class="keyword">try</span> (OutputStream os = response.getOutputStream()) &#123;</span><br><span class="line">			<span class="keyword">try</span> (BufferedInputStream in = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(downFile))) &#123;</span><br><span class="line">				<span class="keyword">int</span> len;</span><br><span class="line">				<span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];</span><br><span class="line">				<span class="keyword">while</span> ((len = in.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">					os.write(buf, <span class="number">0</span>, len);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 在线资源浏览 分页获取</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> resourcepath</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> start</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> size</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> Map&lt;String, Object&gt; <span class="title">resources</span><span class="params">(String resourcepath, Integer start, Integer size)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">		map.put(<span class="string">"state"</span>, <span class="string">"SUCCESS"</span>);<span class="comment">// UEDI</span></span><br><span class="line">		map.put(<span class="string">"start"</span>, start + <span class="string">""</span>);</span><br><span class="line">		File file = <span class="keyword">new</span> File(resourcepath);</span><br><span class="line">		File[] folders = file.listFiles();</span><br><span class="line">		List&lt;File&gt; folderlist = Arrays.asList(folders);</span><br><span class="line">		folderlist.sort((f1, f2) -&gt; &#123;</span><br><span class="line">			<span class="keyword">return</span> f2.getName().compareTo(f1.getName());</span><br><span class="line">		&#125;);</span><br><span class="line">		List&lt;String&gt; listurl = <span class="keyword">new</span> ArrayList&lt;String&gt;(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">int</span> end = folders.length;</span><br><span class="line">		<span class="keyword">if</span> (end &gt; <span class="number">20</span>)</span><br><span class="line">			end = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; end; i++) &#123;</span><br><span class="line">			File folder = folders[i];</span><br><span class="line">			File[] files = folder.listFiles();</span><br><span class="line">			<span class="keyword">for</span> (File f : files) &#123;</span><br><span class="line">				String abspath = f.getAbsolutePath();</span><br><span class="line">				String[] fs = abspath.split(<span class="string">"\\\\"</span>);</span><br><span class="line">				String ymdpath = <span class="string">"/"</span> + fs[fs.length - <span class="number">4</span>] + <span class="string">"/"</span> + fs[fs.length - <span class="number">3</span>] + <span class="string">"/"</span> + fs[fs.length - <span class="number">2</span>] + <span class="string">"/"</span></span><br><span class="line">						+ fs[fs.length - <span class="number">1</span>];</span><br><span class="line">				listurl.add(ymdpath);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		map.put(<span class="string">"total"</span>, listurl.size() + <span class="string">""</span>);</span><br><span class="line">		<span class="keyword">int</span> len = start + size;</span><br><span class="line">		<span class="keyword">if</span> (len &gt;= listurl.size())</span><br><span class="line">			len = listurl.size();</span><br><span class="line">		listurl = listurl.subList(start, len);</span><br><span class="line">		List&lt;Map&lt;String, String&gt;&gt; listmap = <span class="keyword">new</span> ArrayList&lt;Map&lt;String, String&gt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; listurl.size(); i++) &#123;</span><br><span class="line">			String url = listurl.get(i);</span><br><span class="line">			Map&lt;String, String&gt; urlmap = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">			urlmap.put(<span class="string">"url"</span>, url);</span><br><span class="line">			listmap.add(urlmap);</span><br><span class="line">		&#125;</span><br><span class="line">		map.put(<span class="string">"list"</span>, listmap);</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取配置</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">config</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">		StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="comment">// 这里根据配置文件来判断 如果似乎部署jar 包的方式需要用到 classLoader 来加载配置文件</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span> != active &amp;&amp; active.contains(<span class="string">"prod"</span>)) &#123;</span><br><span class="line">			InputStream is = <span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"static/ueditor/jsp/config.json"</span>);</span><br><span class="line">			reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(is));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			reader = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">					<span class="keyword">new</span> FileReader(ResourceUtils.getFile(<span class="string">"classpath:static/ueditor/jsp/config.json"</span>)));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (String line = <span class="string">""</span>; (line = reader.readLine()) != <span class="keyword">null</span>;) &#123;</span><br><span class="line">			builder.append(line);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> builder.toString();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 上传涂鸦图片</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> base64img</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> Map&lt;String, String&gt; <span class="title">uploadscrawl</span><span class="params">(String base64img)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		String suffix = <span class="string">".jpg"</span>; <span class="comment">// 默认jpg 文件</span></span><br><span class="line">		String fileName = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMddHHmmssSSS"</span>).format(<span class="keyword">new</span> Date()) + suffix;</span><br><span class="line">		String fullPath = <span class="string">""</span>;</span><br><span class="line">		String ymd = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMdd"</span>).format(<span class="keyword">new</span> Date());</span><br><span class="line">		File floder = <span class="keyword">new</span> File(<span class="keyword">this</span>.imageUploadPath + File.separator + ymd);</span><br><span class="line">		<span class="keyword">if</span> (!floder.exists())</span><br><span class="line">			floder.mkdirs();</span><br><span class="line">		fullPath = floder.getPath() + File.separator + fileName;</span><br><span class="line">		<span class="keyword">byte</span>[] bs = Base64Utils.decodeFromString(base64img);</span><br><span class="line">		<span class="keyword">try</span> (OutputStream os = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(fullPath))) &#123;</span><br><span class="line">			os.write(bs);</span><br><span class="line">			os.flush();</span><br><span class="line">			os.close();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ueResult(<span class="string">"SUCCESS"</span>, String.format(<span class="string">"/ueditor/image/%s/%s"</span>, ymd, fileName), <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 上传文件</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> upfile   文件</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> filetype 文件类型 image | video | file</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IllegalStateException</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> Map&lt;String, String&gt; <span class="title">upfile</span><span class="params">(MultipartFile upfile, String filetype, String uploadPathPrefix)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> IllegalStateException, IOException </span>&#123;</span><br><span class="line">		String suffix = upfile.getOriginalFilename().substring(upfile.getOriginalFilename().lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">		String fileName = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMddHHmmssSSS"</span>).format(<span class="keyword">new</span> Date()) + suffix;</span><br><span class="line">		String fullPath = <span class="string">""</span>;</span><br><span class="line">		String ymd = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMdd"</span>).format(<span class="keyword">new</span> Date());</span><br><span class="line">		File floder = <span class="keyword">new</span> File(uploadPathPrefix + File.separator + ymd);</span><br><span class="line">		<span class="keyword">if</span> (!floder.exists())</span><br><span class="line">			floder.mkdirs();</span><br><span class="line">		fullPath = floder.getPath() + File.separator + fileName;</span><br><span class="line">		upfile.transferTo(<span class="keyword">new</span> File(fullPath));</span><br><span class="line">		String vmpath = String.format(<span class="string">"/ueditor/%s/%s/%s"</span>, filetype, ymd, fileName);</span><br><span class="line">		<span class="keyword">return</span> ueResult(<span class="string">"SUCCESS"</span>, vmpath, upfile.getName(), upfile.getOriginalFilename());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 返回 ueditor 参数</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> state</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> title</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> original</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> Map&lt;String, String&gt; <span class="title">ueResult</span><span class="params">(String state, String url, String title, String original)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">		map.put(<span class="string">"state"</span>, state);<span class="comment">// UEDITOR的规则:不为SUCCESS则显示state的内容</span></span><br><span class="line">		map.put(<span class="string">"url"</span>, url); <span class="comment">// 能访问到你现在图片的路径</span></span><br><span class="line">		map.put(<span class="string">"title"</span>, title);</span><br><span class="line">		map.put(<span class="string">"original"</span>, original);</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在application.yml 文件 新增文件保存路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 7001</span><br><span class="line"></span><br><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: dev # 配置启动方式   dev | prod </span><br><span class="line"></span><br><span class="line"># 配置ueditor 下载的位置</span><br><span class="line">ueditor:</span><br><span class="line">  imagepath: D:\\ueditor\\image\\</span><br><span class="line">  videopath: D:\\ueditor\\video\\</span><br><span class="line">  filepath: D:\\ueditor\\file\\</span><br></pre></td></tr></table></figure>
+<h2 id="步骤三-测试"><a href="#步骤三-测试" class="headerlink" title="步骤三 测试"></a>步骤三 测试</h2><p>测试页面代码 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>富文本编辑器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">name</span>=<span class="string">"content"</span> <span class="attr">type</span>=<span class="string">"text/plain"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/ueditor/ueditor.config.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/ueditor/ueditor.all.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">var</span> ue = UE.getEditor(<span class="string">'container'</span>);</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动springboot 项目打开页面测试即可</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://githubbycj.github.io/2020/06/18/springmvc-merge-ueditor/" title="springmvc-merge-ueditor" target="_blank" rel="external">https://githubbycj.github.io/2020/06/18/springmvc-merge-ueditor/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://githubbycj.github.io/" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://githubbycj.github.io/" target="_blank"><span class="text-dark">昌久</span><small class="ml-1x">我不敲代码，我只是代码的搬运工</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/05/30/create-hexo-file/" title="怎样创建hexo 的博客"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://githubbycj.github.io/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'a00a60e09e4adf5d6be8',
+    clientSecret: '5d76641ebcec62cb7c72ead35373f28f72de7426',
+    repo: 'githubbycj.github.io',
+    owner: 'githubbycj',
+    admin: ['githubbycj'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
